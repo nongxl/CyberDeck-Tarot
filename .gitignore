@@ -1,28 +1,10 @@
-# Nuxt
-.nuxt
-.output
-dist
+doc
+prompt.txt
+.gitignore
 
-# Dependencies
-node_modules
+# 敏感信息存储文件
+src/secrets.h
 
-# Env
-.env
-
-# IDE
-.vscode
-.idea
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Test results
-test-results/
-playwright-report/
-
-# Vecgrep
-.vecgrep
-.vercel
+# SD卡本地配置文件
+**/config.json
+**/wifi.json

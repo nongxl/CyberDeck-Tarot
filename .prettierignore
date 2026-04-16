@@ -1,5 +1,0 @@
-dist
-.nuxt
-.output
-node_modules
-*.min.js
