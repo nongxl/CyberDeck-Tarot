@@ -90,3 +90,12 @@ Special thanks to [abdul-hamid-achik/tarotagent](https://github.com/abdul-hamid-
 | Starts Speaking | 开始解读 | Echoes from the Astral Plane: | 来自星界的回响： |
 | Complete | 解读结束 | [The Stars have spoken] | [众星已启示] |
 | Navigation | 操作指引 | Traverse the stars with ; and . / ENTER for a new vision. | 以 ; 和 . 键拨动星河 / 回车召唤新幻象 |
+
+---
+
+## ⚖️ License | 许可协议
+
+This project is licensed under the **PolyForm Noncommercial License 1.0.0**. 
+
+- **English**: You may use this software for any noncommercial purpose. Commercial use is strictly prohibited. See [LICENSE](LICENSE) for the full text.
+- **中文内容**: 本项目采用 **PolyForm Noncommercial License 1.0.0** 许可协议。您可以将本软件用于任何非商业目的。**严禁任何形式的商业用途**。详情请参阅 [LICENSE](LICENSE) 文件全文。
