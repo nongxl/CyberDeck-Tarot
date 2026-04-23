@@ -17,7 +17,7 @@ A mystical Tarot reading terminal for the **M5Stack Cardputer**. This project tr
 
 ### 🛠️ Hardware Requirements
 - **M5Stack Cardputer** (ESP32-S3)
-- **MicroSD Card**: For configuration and asset storage.
+- **MicroSD Card**: Is not required, but recommended for configuration and asset storage.
 
 ### 💻 Software Dependencies
 - **PlatformIO** (VS Code extension recommended)
@@ -51,7 +51,7 @@ Special thanks to [abdul-hamid-achik/tarotagent](https://github.com/abdul-hamid-
 
 ### 🛠️ 硬件需求
 - **M5Stack Cardputer** (ESP32-S3)
-- **MicroSD 卡**: 用于存储配置文件和素材。
+- **MicroSD 卡**: 不是必需的，但推荐用于存储配置文件和素材。
 
 ### 💻 软件依赖
 - **PlatformIO** (建议配合 VS Code 使用)

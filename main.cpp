@@ -32,6 +32,7 @@ enum AppState {
 };
 
 AppState currentState = STATE_INIT;
+bool sdAvailable = false;
 
 // Configuration
 String ssid = "";
@@ -576,6 +577,7 @@ void drawSpreadList() {
 }
 
 void loadWifiConfig() {
+    if (!sdAvailable) return;
     if (SD.exists("/CyberDeck-Tarot/wifi.json")) {
         File file = SD.open("/CyberDeck-Tarot/wifi.json");
         JsonDocument doc;
@@ -589,6 +591,7 @@ void loadWifiConfig() {
 }
 
 void saveWifiConfig() {
+    if (!sdAvailable) return;
     File file = SD.open("/CyberDeck-Tarot/wifi.json", FILE_WRITE);
     if (file) {
         JsonDocument doc;
@@ -600,6 +603,7 @@ void saveWifiConfig() {
 }
 
 void loadLLMConfig() {
+    if (!sdAvailable) return;
     if (SD.exists("/CyberDeck-Tarot/config.json")) {
         File file = SD.open("/CyberDeck-Tarot/config.json");
         JsonDocument doc;
@@ -616,6 +620,7 @@ void loadLLMConfig() {
 }
 
 void saveLLMConfig() {
+    if (!sdAvailable) return;
     File file = SD.open("/CyberDeck-Tarot/config.json", FILE_WRITE);
     if (file) {
         JsonDocument doc;
@@ -660,16 +665,16 @@ void setup() {
     
     SPI.begin(40, 39, 14, 12);
     if (!SD.begin(12, SPI, 15000000)) { 
-        M5Cardputer.Display.fillRect(0, 0, M5Cardputer.Display.width(), M5Cardputer.Display.height(), TFT_RED);
-        M5Cardputer.Display.setTextColor(TFT_WHITE, TFT_RED);
-        M5Cardputer.Display.setTextDatum(middle_center);
-        M5Cardputer.Display.drawString("SOUL MISSING / 魂龛缺失", M5Cardputer.Display.width()/2, M5Cardputer.Display.height()/2);
-        currentState = STATE_ERROR_SD;
-        return;
-    }
-    
-    if (!SD.exists("/CyberDeck-Tarot")) {
-        SD.mkdir("/CyberDeck-Tarot");
+        sdAvailable = false;
+        printTerm("SOUL VESSEL MISSING / 魂龛缺失", TFT_CYAN);
+        printTerm("Seeking deep wisdom within / 正在探求内在智慧", TFT_YELLOW);
+        printTerm("Visions will not be etched / 幻象将无法保存", TFT_DARKGREY);
+        delay(2000);
+    } else {
+        sdAvailable = true;
+        if (!SD.exists("/CyberDeck-Tarot")) {
+            SD.mkdir("/CyberDeck-Tarot");
+        }
     }
     
     currentState = STATE_LANG_CHECK;
@@ -912,6 +917,9 @@ void loop() {
         case STATE_LANG_CHECK:
             loadLLMConfig();
             if (appLang == "") {
+                if (!sdAvailable) {
+                    printTerm(L("Oracle guide missing. Please choose a focus:", "神旨导引缺失，请选择语种以开启仪式："), TFT_CYAN);
+                }
                 selectedLang = 0;
                 drawLangList();
                 currentState = STATE_LANG_SELECT;

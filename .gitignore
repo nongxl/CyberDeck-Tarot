@@ -1,6 +1,7 @@
 doc
 prompt.txt
 .gitignore
+.pio
 
 # 敏感信息存储文件
 src/secrets.h
